@@ -7,25 +7,26 @@ import recipes from "../data/recipes.js";
 
 // GET ALL RECIPES
 // getRecipes should return an array of all recipes
-export function getRecipes() {
+export async function getRecipes() {
   return recipes;
 }
 
 // GET A RECIPE BY ID
-export function getRecipeByID(id) {
-  const recipeById = recipes.find(({ id }) => id === requestId);
+export async function getRecipeByID(id) {
+ const recipeById = recipes.find(({ id }) => id === id);
   if (recipeById) {
     return recipeById;
   }
 }
 
 // CREATE A RECIPE
-export function createRecipe(recipe) {
+export async function createRecipe(recipe) {
   recipes.push(recipe);
+  return recipes[recipes.length - 1];
 }
 
 // UPDATE A RECIPE BY ID
-export function updateRecipeByID(id, updates) {
+export async function updateRecipeByID(id, updates) {
   //take in the id, take in an updated recipe
   //find the recipe with the id matching what we were given.
   //replace that recipe with the updates
@@ -33,19 +34,20 @@ export function updateRecipeByID(id, updates) {
   const foundIndex = recipes.findIndex(function (recipe) {
     return recipe.id === id;
   });
-  recipes[index] = updates;
-  return recipes[index];
+  recipes[foundIndex] = updates;
+  return recipes[foundIndex];
 }
 
 // DELETE A RECIPE BY ID
-export function deleteRecipeByID(id) {
+export async function deleteRecipeByID(id) {
   //take an item with that id
   //find that item from the array
   const foundIndex = recipes.findIndex(function (recipe) {
     return recipe.id === id;
   });
+  const item = recipes[foundIndex]
   //remove it from array
   //return that removed item
   recipes.splice(foundIndex, 1);
-  return foundIndex;
+  return item;
 }
