@@ -26,28 +26,26 @@ export function createRecipe(recipe) {
 
 // UPDATE A RECIPE BY ID
 export function updateRecipeByID(id, updates) {
-
-    //take in the id, take in an updated recipe
-    //find the recipe with the id matching what we were given.
-    //replace that recipe with the updates
-    //return new recipe
+  //take in the id, take in an updated recipe
+  //find the recipe with the id matching what we were given.
+  //replace that recipe with the updates
+  //return new recipe
   const foundIndex = recipes.findIndex(function (recipe) {
-      return recipe.id===id;
+    return recipe.id === id;
   });
-  recipes[index]=updates;
+  recipes[index] = updates;
   return recipes[index];
-};
-
+}
 
 // DELETE A RECIPE BY ID
 export function deleteRecipeByID(id) {
-    //take an item with that id
-    //find that item from the array
-    const foundIndex = recipes.findIndex(function (recipe) {
-        return recipe.id===id;
-    });
-    //remove it from array
-    //return that removed item
+  //take an item with that id
+  //find that item from the array
+  const foundIndex = recipes.findIndex(function (recipe) {
+    return recipe.id === id;
+  });
+  //remove it from array
+  //return that removed item
   recipes.splice(foundIndex, 1);
-  return item;
+  return foundIndex;
 }
